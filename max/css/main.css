@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
@@ -26,7 +27,7 @@ body {
     -ms-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Calibri, Arial, sans-serif;
 }
 .body_show {
     opacity: 1;
@@ -50,7 +51,6 @@ input[type="file"] {
 .welcome__t {
     font-size: 40px;
     width: 50%;
-    text-shadow: 2px 1px #999;
     text-transform: uppercase;
     margin-bottom: 100px;
 }
@@ -165,7 +165,7 @@ input[type="file"] {
 
 .result {
     position: absolute;
-    background: red;
+    background: #f8f8f8;
     height: 100%;
     width: 100%;
     top: 100%;

@@ -58,6 +58,34 @@ var $$ = function(selector, parent) {
     return (document || parent).querySelectorAll(selector)
 };
 
+function closest(el, selector) {
+    var matchesFn;
+
+    // find vendor prefix
+    ['matches','webkitMatchesSelector','mozMatchesSelector','msMatchesSelector','oMatchesSelector'].some(function(fn) {
+        if (typeof document.body[fn] == 'function') {
+            matchesFn = fn;
+            return true;
+        }
+        return false;
+    });
+//console.log(matchesFn, selector, el[matchesFn](selector))
+//    if (el!==null && el[matchesFn](selector)) {
+//        return el;
+//    }
+
+    // traverse parents
+    while (el!==null) {
+        parent = el.parentElement;
+        if (parent!==null && parent[matchesFn](selector)) {
+            return parent;
+        }
+        el = parent;
+    }
+
+    return null;
+};
+
 function render(shapes, container) {
     if (!container) {
         container = document.createDocumentFragment();
@@ -73,6 +101,7 @@ function render(shapes, container) {
 
         var elem = document.createElement('div');
         //elem.setAttribute('contenteditable', true);
+        elem.classList.add('gnr');
         for(var nameStyleRule in styleRules) {
             if (styleRules.hasOwnProperty(nameStyleRule)) {
                 elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
@@ -82,6 +111,35 @@ function render(shapes, container) {
     }
 
     return container;
+};
+
+function renderHTMLstr(shapes, container) {
+    if (!container) {
+        container = document.createDocumentFragment();
+    }
+
+    for(var i = 0, len = shapes.length; i < len; i += 1) {
+        var styleRules = {
+            top: shapes[i].pos.tl.y / sheetHeight * 100,
+            left: shapes[i].pos.tl.x / sheetWidth * 100,
+            width: (shapes[i].pos.tr.x / sheetHeight * 100) - (shapes[i].pos.tl.x / sheetWidth * 100),
+            height: (shapes[i].pos.bl.y / sheetWidth * 100) - (shapes[i].pos.tl.y / sheetHeight * 100)
+        };
+
+        var elem = document.createElement('div');
+        //elem.setAttribute('contenteditable', true);
+        elem.classList.add('gnr');
+        for(var nameStyleRule in styleRules) {
+            if (styleRules.hasOwnProperty(nameStyleRule)) {
+                elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
+            }
+        }
+        container.appendChild(elem);
+    }
+
+    var addCont = document.createElement('div');
+    addCont.appendChild(container);
+    return addCont.innerHTML
 };
 
 var dragElems = null;
@@ -176,18 +234,32 @@ window.addEventListener('load', function() {
         }
     }, 1500);
 
-    $('#files').addEventListener('change', function(event) {
-        var files = event.target.files;
+    //$('#files').addEventListener('change', function(event) {
+    //    var files = event.target.files;
+    //
+    //    var data = getDataFromImgs(files),
+    //        outputCont = $('.result');
+    //
+    //    for(var i = 0, len = data.length; i < len; i += 1) {
+    //        outputCont.appendChild(render(data[i]));
+    //    }
+    //
+    //    outputCont.classList.add('result_show');
+    //    startEdit();
+    //}, false);
 
-        var data = getDataFromImgs(files),
+    $('#files').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var data = getDataFromImgs(),
             outputCont = $('.result');
+        var resultStr = '';
 
         for(var i = 0, len = data.length; i < len; i += 1) {
-            outputCont.appendChild(render(data[i]));
-        };
+            resultStr += renderHTMLstr(data[i]);
+        }
 
-        outputCont.classList.add('result_show');
-        startEdit();
+        console.log(resultStr)
     }, false);
 }, false);
 
@@ -217,6 +289,7 @@ $('body').addEventListener('click', function(event) {
         targetShapes[i].setAttribute('contenteditable', false);
     }
     if ($('#edit-text').checked === true) {
+        console.log(closest(event.target, '.gnr'))
         event.target.setAttribute('contenteditable', true);
     }
 }, false);
