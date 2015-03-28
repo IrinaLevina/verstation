@@ -20,8 +20,7 @@ function getDataFromImgs(files) {
                 x: 100,
                 y: 100
             }
-        },
-        items: []
+        }
     }, {
         pos: {
             tl: {
@@ -63,31 +62,7 @@ function render(shapes, container) {
     if (!container) {
         container = document.createDocumentFragment();
     }
-    //if (!rootShape) {
-    //    rootShape = shape;
-    //}
-    //
-    //if (shape && shape.items && shape.items.length) {
-    //    for(var i = 0, len = shape.items.length; i < len; i += 1) {
-    //        var styleRules = {
-    //            top: shape.items[i].pos.tl.y / rootShape.height * 100,
-    //            left: shape.items[i].pos.tl.x / rootShape.width * 100,
-    //            width: (shape.items[i].pos.tr.x / rootShape.height * 100) - (shape.items[i].pos.tl.x / rootShape.width * 100),
-    //            height: (shape.items[i].pos.bl.y / rootShape.width * 100) - (shape.items[i].pos.tl.y / rootShape.height * 100)
-    //        };
-    //
-    //        var elem = document.createElement('div');
-    //        //elem.setAttribute('contenteditable', true);
-    //        for(var nameStyleRule in styleRules) {
-    //            if (styleRules.hasOwnProperty(nameStyleRule)) {
-    //                elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
-    //            }
-    //        }
-    //        container.appendChild(elem);
-    //        //render(shape.items[i], elem, rootShape);
-    //    }
-    //}
-console.log(shapes)
+
     for(var i = 0, len = shapes.length; i < len; i += 1) {
         var styleRules = {
             top: shapes[i].pos.tl.y / sheetHeight * 100,
