@@ -143,7 +143,7 @@ function startEdit() {
             target.style.transform =
                 'translate(' + x + 'px, ' + y + 'px)';
 
-        // update the posiion attributes
+        // update the position attributes
         target.setAttribute('data-x', x);
         target.setAttribute('data-y', y);
     };

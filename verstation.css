@@ -1,0 +1,7 @@
+.hidden{ display: none; }
+.ouput-mass{ font-size: 1px; }
+#markup {
+    max-width: 1000px;
+    max-height: 1000px;
+}
+.canvas-wrapper{ display: none}
