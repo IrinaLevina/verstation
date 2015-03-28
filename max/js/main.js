@@ -204,7 +204,7 @@ window.addEventListener('load', function() {
         }
     }, 1500);
 
-    $('#files').addEventListener('change', function(event) {
+/*    $('#files').addEventListener('change', function(event) {
         var files = event.target.files;
 
         var data = getDataFromImg(files),
@@ -216,7 +216,7 @@ window.addEventListener('load', function() {
 
         outputCont.classList.add('result_show');
         startEdit();
-    }, false);
+    }, false);*/
 }, false);
 
 $('#edit-sizes').addEventListener('change', function() {
@@ -241,4 +241,8 @@ $('#view-source').addEventListener('change', function() {
 
 $('body').addEventListener('click', function() {
 
+}, false);
+
+$('.button-generate').addEventListener('click', function() {
+     console.log("bleat'")
 }, false);

@@ -11,8 +11,8 @@ var globalCurrentDirection = 'left',
 $(document).ready(function(){
 	// создаем или находим изображение
 	var img = $('.markup'),
-	globalWidth = $('.markup').width,
-	globalHeight = $('.markup').height;
+	width = $('.markup').width,
+	height = $('.markup').height;
 	var markup = document.getElementById("markup");
 	
 	$('.button-generate').addEventListener('click', function() {
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		// помещаем изображение в контекст
 		context.drawImage(markup, 0, 0);
 		// получаем объект, описывающий внутреннее состояние области контекста
-		var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
+		var imageData = context.getImageData(0, 0, width, height);
 		var pixels = imageData.data;
 		datamass = pixels;
 		analizePixels(pixels);
@@ -32,7 +32,7 @@ $(document).ready(function(){
 		// кладем результат фильтрации обратно в canvas
 		context.putImageData(imageDataFiltered, 0, 0);*/
 	});
-});
+}, false);
 
 var analizePixels = function(canvasPixels){
 	var i = 0,
@@ -41,8 +41,8 @@ var analizePixels = function(canvasPixels){
 	indexCol = 0,
 	originalWidth = 0,
 	customWidth = 0,
-	width = $('.markup').width,
-	height = $('.markup').height;
+	width = $('.markup').width(),
+	height = $('.markup').height();
 	/*width = 0, height = 0;*/
 	globalHeight = height;
 	globalWidth = width;
