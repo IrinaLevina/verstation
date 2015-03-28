@@ -3,7 +3,8 @@ customDataMass = null;
 var globalCurrentDirection = 'left',
 	globaCurrentPoint,
 	nextPoint = {},
-	resultStack = new Array();
+	resultStack = new Array(),
+	firstPoint = {};
 $(document).ready(function(){
 	// создаем или находим изображение
 	var img = $('.markup'),
@@ -102,12 +103,13 @@ var analizePixels = function(canvasPixels){
 
 
 	var algorithmFindContur = function(){
-		var direction = 'right',
-			currentColor = 0;
+		var currentColor = 0,
+			moving = false;
 		var i = 0; 
 		var j = 0;
 		var currentPoint = {};
 		var current = false;
+		var localFirstPoint = {};
 		currentPoint["i"] = 0;
 		currentPoint["j"] = 0;
 		for (i = 0; i < customDataMass.length; i++){
@@ -123,26 +125,42 @@ var analizePixels = function(canvasPixels){
 				}
 			}
 		}
-		globaCurrentPoint = currentPoint;
-		if (current){
-			goAroundContur(globaCurrentPoint); 
+		localFirstPoint["i"]  = currentPoint["i"];
+		localFirstPoint["j"]  = currentPoint["j"];
+		/*globaCurrentPoint = currentPoint;*/
+		moving = true;
+		if (current){// if we founded black point
+			/*goAroundContur(globaCurrentPoint, localFirstPoint);*/
+			console.log("first position: ") 
+			console.log(localFirstPoint);
+			currentPoint = move(currentPoint, globalCurrentDirection);
+			
+			while (moving){
+				currentPoint = move(currentPoint, globalCurrentDirection);
+					console.log("point after move")
+					console.log(currentPoint);
+					console.log("direction after move");
+					console.log(currentPoint);
+				if (customDataMass[currentPoint["i"]][currentPoint["j"]] == 1){
+					resultStack.push(currentPoint);
+				}
+				if (currentPoint["i"] == localFirstPoint["i"] && currentPoint["j"] == localFirstPoint["j"]){
+					moving = false;
+				}
+
+			}
+			console.log("result array");
+			console.log(resultStack);
 		}
+
 	}
-var goAroundContur = function(currentPoint){
-	var stack = [],
-		direction = 'right';
-	var firstPoint = globaCurrentPoint;
+var goAroundContur = function(currentPoint, localFirstPoint){
+	var direction = 'right';
 	var nextElement = null;
 	var directionTo;
-	var moving = false;
-	move(globaCurrentPoint, direction);
-	while (globaCurrentPoint["i"] != firstPoint["i"] || globaCurrentPoint["j"] != firstPoint["j"]){
-		moving = true;
-		move(globaCurrentPoint, direction, color);
-		if (customDataMass[globaCurrentPoint["i"]][globaCurrentPoint["j"]] == 1){
-			resultStack.push(globaCurrentPoint);
-		}
-	}
+	var moving = true;
+	
+	
 	
 	console.log(resultStack)
 }
@@ -151,48 +169,49 @@ var move = function(point, direction){
 	if (customDataMass[point["i"]][point["j"]] == 1){
 		switch(direction) {
 		    case "left":
-		        globalCurrentDirection = "top";
-		        globaCurrentPoint["i"] = point["i"]-1;
-		        globaCurrentPoint["j"] = point["j"];
+		        globalCurrentDirection = "bottom";
+		        point["i"] = point["i"]-1;
+		        point["j"] = point["j"];
 		        break;
 		    case "right":
-		        globalCurrentDirection = "bottom";
-		        globaCurrentPoint["i"] = point["i"]+1;
-		        globaCurrentPoint["j"] = point["j"];
+		        globalCurrentDirection = "top";
+		        point["i"] = point["i"]+1;
+		        point["j"] = point["j"];
 		        break; 
 		    case "top":
-		        globalCurrentDirection = "right";
-		        globaCurrentPoint["i"] = point["i"];
-		        globaCurrentPoint["j"] = point["j"]+1;
-		        break;
-	        case "botton":
 		        globalCurrentDirection = "left";
-		        globaCurrentPoint["i"] = point["i"];
-		        globaCurrentPoint["j"] = point["j"]-1;
+		        point["i"] = point["i"];
+		        point["j"] = point["j"]+1;
+		        break;
+	        case "bottom":
+		        globalCurrentDirection = "right";
+		        point["i"] = point["i"];
+		        point["j"] = point["j"]-1;
 		        break;
 		}
 	} else if (customDataMass[point["i"]][point["j"]] == 0) {
 		switch(direction) {
 		    case "left":
-		        globalCurrentDirection = "bottom";
-		        nextPoint["i"] = point["i"]+1;
-		        nextPoint["j"] = point["j"];
+		        globalCurrentDirection = "top";
+		        point["i"] = point["i"]+1;
+		        point["j"] = point["j"];
 		        break;
 		    case "right":
-		        globalCurrentDirection = "top";
-		        nextPoint["i"] = point["i"]-1;
-		        nextPoint["j"] = point["j"];
+		        globalCurrentDirection = "bottom";
+		        point["i"] = point["i"]-1;
+		        point["j"] = point[ "j"];
 		        break; 
 		    case "top":
-		        globalCurrentDirection = "left";
-		        nextPoint["i"] = point["i"];
-		        nextPoint["j"] = point["j"]-1;
-		        break;
-	        case "botton":
 		        globalCurrentDirection = "right";
-		        nextPoint["i"] = point["i"];
-		        nextPoint["j"] = point["j"]+1;
+		        point["i"] = point["i"];
+		        point["j"] = point["j"]-1;
+		        break;
+	        case "bottom":
+		        globalCurrentDirection = "left";
+		        point["i"] = point["i"];
+		        point["j"] = point["j"]+1;
 		        break;
 		}
 	}
+	return point;
 }
