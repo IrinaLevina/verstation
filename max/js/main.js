@@ -1,74 +1,54 @@
-function getDataFromImg(files) {
-    var data = [{
-        width: 800,
-        height: 800,
-        items: [{
-            type: 'square',
-            pos: {
-                tl: {
-                    x: 10,
-                    y: 10
-                },
-                tr: {
-                    x: 100,
-                    y: 10
-                },
-                bl: {
-                    x: 10,
-                    y: 100
-                },
-                br: {
-                    x: 100,
-                    y: 100
-                }
+var sheetHeight = 800,
+    sheetWidth = 800;
+
+function getDataFromImgs(files) {
+    var resultFromPhoto1 = [{
+        pos: {
+            tl: {
+                x: 10,
+                y: 10
             },
-            items: []
-        }, {
-            type: 'square',
-            pos: {
-                tl: {
-                    x: 10,
-                    y: 150
-                },
-                tr: {
-                    x: 500,
-                    y: 150
-                },
-                bl: {
-                    x: 10,
-                    y: 500
-                },
-                br: {
-                    x: 500,
-                    y: 500
-                }
+            tr: {
+                x: 100,
+                y: 10
             },
-            items: [{
-                type: 'square',
-                pos: {
-                    tl: {
-                        x: 10,
-                        y: 150
-                    },
-                    tr: {
-                        x: 500,
-                        y: 150
-                    },
-                    bl: {
-                        x: 10,
-                        y: 500
-                    },
-                    br: {
-                        x: 500,
-                        y: 500
-                    }
-                },
-                items: []
-            }]
-        }]
+            bl: {
+                x: 10,
+                y: 100
+            },
+            br: {
+                x: 100,
+                y: 100
+            }
+        },
+        items: []
+    }, {
+        pos: {
+            tl: {
+                x: 10,
+                y: 150
+            },
+            tr: {
+                x: 500,
+                y: 150
+            },
+            bl: {
+                x: 10,
+                y: 500
+            },
+            br: {
+                x: 500,
+                y: 500
+            }
+        }
     }];
 
-    return data;
+    var resultFromPhoto2 = [];
+
+
+    var generalResult = [resultFromPhoto1, resultFromPhoto2];
+
+    return generalResult;
 }
 
 var $ = function(selector, parent) {
@@ -79,33 +59,51 @@ var $$ = function(selector, parent) {
     return (document || parent).querySelectorAll(selector)
 };
 
-function render(shape, container, rootShape) {
+function render(shapes, container) {
     if (!container) {
         container = document.createDocumentFragment();
     }
-    if (!rootShape) {
-        rootShape = shape;
-    }
+    //if (!rootShape) {
+    //    rootShape = shape;
+    //}
+    //
+    //if (shape && shape.items && shape.items.length) {
+    //    for(var i = 0, len = shape.items.length; i < len; i += 1) {
+    //        var styleRules = {
+    //            top: shape.items[i].pos.tl.y / rootShape.height * 100,
+    //            left: shape.items[i].pos.tl.x / rootShape.width * 100,
+    //            width: (shape.items[i].pos.tr.x / rootShape.height * 100) - (shape.items[i].pos.tl.x / rootShape.width * 100),
+    //            height: (shape.items[i].pos.bl.y / rootShape.width * 100) - (shape.items[i].pos.tl.y / rootShape.height * 100)
+    //        };
+    //
+    //        var elem = document.createElement('div');
+    //        //elem.setAttribute('contenteditable', true);
+    //        for(var nameStyleRule in styleRules) {
+    //            if (styleRules.hasOwnProperty(nameStyleRule)) {
+    //                elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
+    //            }
+    //        }
+    //        container.appendChild(elem);
+    //        //render(shape.items[i], elem, rootShape);
+    //    }
+    //}
+console.log(shapes)
+    for(var i = 0, len = shapes.length; i < len; i += 1) {
+        var styleRules = {
+            top: shapes[i].pos.tl.y / sheetHeight * 100,
+            left: shapes[i].pos.tl.x / sheetWidth * 100,
+            width: (shapes[i].pos.tr.x / sheetHeight * 100) - (shapes[i].pos.tl.x / sheetWidth * 100),
+            height: (shapes[i].pos.bl.y / sheetWidth * 100) - (shapes[i].pos.tl.y / sheetHeight * 100)
+        };
 
-    if (shape && shape.items && shape.items.length) {
-        for(var i = 0, len = shape.items.length; i < len; i += 1) {
-            var styleRules = {
-                top: shape.items[i].pos.tl.y / rootShape.height * 100,
-                left: shape.items[i].pos.tl.x / rootShape.width * 100,
-                width: (shape.items[i].pos.tr.x / rootShape.height * 100) - (shape.items[i].pos.tl.x / rootShape.width * 100),
-                height: (shape.items[i].pos.bl.y / rootShape.width * 100) - (shape.items[i].pos.tl.y / rootShape.height * 100)
-            };
-
-            var elem = document.createElement('div');
-            //elem.setAttribute('contenteditable', true);
-            for(var nameStyleRule in styleRules) {
-                if (styleRules.hasOwnProperty(nameStyleRule)) {
-                    elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
-                }
+        var elem = document.createElement('div');
+        //elem.setAttribute('contenteditable', true);
+        for(var nameStyleRule in styleRules) {
+            if (styleRules.hasOwnProperty(nameStyleRule)) {
+                elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
             }
-            container.appendChild(elem);
-            render(shape.items[i], elem, rootShape);
         }
+        container.appendChild(elem);
     }
 
     return container;
@@ -114,7 +112,6 @@ function render(shape, container, rootShape) {
 var dragElems = null;
 
 function startEdit() {
-    return;
     var offset = { x: 0, y: 0 };
 
     var resizemove = function (event) {
@@ -207,7 +204,7 @@ window.addEventListener('load', function() {
     $('#files').addEventListener('change', function(event) {
         var files = event.target.files;
 
-        var data = getDataFromImg(files),
+        var data = getDataFromImgs(files),
             outputCont = $('.result');
 
         for(var i = 0, len = data.length; i < len; i += 1) {
@@ -239,6 +236,12 @@ $('#view-source').addEventListener('change', function() {
     }
 }, false);
 
-$('body').addEventListener('click', function() {
-
+$('body').addEventListener('click', function(event) {
+    var targetShapes = $$('.result div');
+    for(var i = 0, len = targetShapes.length; i < len; i += 1) {
+        targetShapes[i].setAttribute('contenteditable', false);
+    }
+    if ($('#edit-text').checked === true) {
+        event.target.setAttribute('contenteditable', true);
+    }
 }, false);
