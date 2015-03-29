@@ -75,6 +75,7 @@
             };
 
             var elem = document.createElement('div');
+            elem.classList.add('ghr');
             //elem.setAttribute('contenteditable', true);
             for(var nameStyleRule in styleRules) {
                 if (styleRules.hasOwnProperty(nameStyleRule)) {
@@ -150,7 +151,7 @@
             onend: dragOnEnd
         };
 
-        dragElems = interact('.markup div')
+        dragElems = interact('.result__markup div')
             .resizable({
                 edges: { left: true, right: true, bottom: true, top: true }
             })
@@ -212,17 +213,17 @@
             dragElems.unset();
             dragElems = null;
         }
-        $('#copyhtml').value = templateHTML.replace(/{htmlstring}/, $('.markup').innerHTML);
+        $('#copyhtml').value = templateHTML.replace(/{htmlstring}/, $('.result__markup').innerHTML);
         $('.copy').classList.add('copy_show');
     }, false);
 
 
     $('body').addEventListener('click', function(event) {
-        var targetShapes = $$('.markup div');
+        var targetShapes = $$('.result__markup div');
         for(var i = 0, len = targetShapes.length; i < len; i += 1) {
             targetShapes[i].setAttribute('contenteditable', false);
         }
-        if ($('#edit-text').checked === true) {
+        if ($('#edit-text').checked === true && event.target.classList.contains('ghr')) {
             event.target.setAttribute('contenteditable', true);
         }
     }, false);
