@@ -14,6 +14,7 @@ $(document).ready(function(){
 	width = $('.markup').width(),
 	height = $('.markup').height();
 	var markup = document.getElementById("markup");
+
 	
 	$('.button-generate').on('click', function() {
 		// создаем или находим canvas

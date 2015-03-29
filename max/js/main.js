@@ -77,7 +77,6 @@
 
             if (styleRules.height>0.5 || styleRules.width>0.5){
                 var elem;
-                console.log(shapes[i].pos.type)
                 switch(shapes[i].pos.type) {
                     case 'div':
                         elem = document.createElement('div');
@@ -87,7 +86,6 @@
                         elem.innerHTML = 'I\'m a button';
                         break;
                     case 'header':
-                        console.log('ok')
                         elem = document.createElement('h1');
                         elem.innerHTML = 'I\'m a H1';
                         break;
@@ -107,9 +105,14 @@
         return container;
     };
 
-    var dragElems = null;
+    window.dragElems = null;
 
     window.startEdit = function() {
+        if (dragElems) {
+            dragElems.unset();
+            dragElems = null;
+        }
+
         var offset = { x: 0, y: 0 };
 
         var resizemove = function (event) {
@@ -260,5 +263,11 @@
 
     $('.copy-popover-close').addEventListener('click', function(event) {
         $('.copy').classList.remove('copy_show');
+    }, false);
+
+    $('.result__back').addEventListener('click', function(event) {
+        $('.result').classList.remove('result_show');
+        $('#files').value = '';
+        $('.ouput-mass').innerHTML = '';
     }, false);
 }());

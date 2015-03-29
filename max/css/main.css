@@ -51,7 +51,6 @@ input[type="file"] {
 }
 .welcome__t {
     font-size: 40px;
-    width: 50%;
     text-transform: uppercase;
     margin-bottom: 100px;
 }
@@ -309,4 +308,9 @@ input[type=radio]:checked + label, input[type=checkbox]:checked + label{
     background-color: #fff;
     border-radius: 20px;
     cursor: pointer;
+}
+.result__back {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }

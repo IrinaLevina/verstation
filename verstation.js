@@ -18,25 +18,29 @@ $(document).ready(function(){
 
 	$('.welcome__t').on("click", function(){
 		$('.pss-block').removeClass("hidden")
-	})
+	});
 
-	
-	$('.button-generate').on('click', function() {
+
+	$('.button-generate input[type="file"]').change(function(event) {
 		// создаем или находим canvas
 		var canvas = document.getElementById('canvas');
 		// получаем его 2D контекст
 		var context = canvas.getContext('2d');
-		// помещаем изображение в контекст
-		context.drawImage(markup, 0, 0);
-		// получаем объект, описывающий внутреннее состояние области контекста
-		var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
-		var pixels = imageData.data;
-		datamass = pixels;
-		analizePixels(pixels);
-/*		// фильтруем
-		imageDataFiltered = sepia(imageData);
-		// кладем результат фильтрации обратно в canvas
-		context.putImageData(imageDataFiltered, 0, 0);*/
+		var img = new Image;
+		img.src = URL.createObjectURL(event.target.files[0]);
+		img.onload = function() {
+			// помещаем изображение в контекст
+			context.drawImage(img, 0, 0);
+			// получаем объект, описывающий внутреннее состояние области контекста
+			var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
+			var pixels = imageData.data;
+			datamass = pixels;
+			analizePixels(pixels);
+			/*		// фильтруем
+			 imageDataFiltered = sepia(imageData);
+			 // кладем результат фильтрации обратно в canvas
+			 context.putImageData(imageDataFiltered, 0, 0);*/
+		}
 	});
 });
 
@@ -175,7 +179,11 @@ var analizePixels = function(canvasPixels){
 			
 			var data = getDataFromImgs(),
             outputCont = $('.result');
-
+			if (dragElems) {
+				dragElems.unset();
+				dragElems = null;
+			}
+			$('.result__markup').html('')
 	        for(var i = 0, len = data.length; i < len; i += 1) {
 	            $('.result__markup').append(render(data[i]));
 	        }
