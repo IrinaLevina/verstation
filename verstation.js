@@ -89,6 +89,7 @@ var analizePixels = function(canvasPixels){
 		}
 	customDataMass = pixMas;
 	outPut();
+	$('.do-beauty').removeClass("hidden");
 	algorithmFindContur();
 }
 
@@ -240,6 +241,7 @@ var setToZero = function(){
 	}
 	resultFromPhoto1[index]['pos']["type"] = "div";
 	var sqare = (maxCol-minCol)*(maxRow-minRow);
+	var perimetr = ((maxCol-minCol)+(maxRow-minRow))*2;
 	if (count >= (sqare/3)*2 && count !=0 && sqare != 0){
 /*		console.log("button")
 		console.log("count = "+count);
@@ -253,6 +255,12 @@ var setToZero = function(){
 		console.log("sqare = "+sqare);*/
 		resultFromPhoto1[index]['pos']["type"] = "header";
 	}
+
+	/*console.log("count = "+ count);
+	console.log("perimetr = "+ perimetr);
+	if (count < perimetr && count !=0 && perimetr != 0){
+		console.log("circle");
+	}*/
 
 	resultStack = [];
 	/*outPut();*/
