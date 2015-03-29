@@ -11,15 +11,17 @@ var globalCurrentDirection = 'left',
 $(document).ready(function(){
 	// создаем или находим изображение
 	var img = $('.markup'),
-	globalWidth = $('.markup').width,
-	globalHeight = $('.markup').height;
+	globalWidth = $('.markup').width(),
+	globalHeight = $('.markup').height();
 	var markup = document.getElementById("markup");
 
 
-
+	$('.welcome__t').on("click", function(){
+		$('.pss-block').removeClass("hidden")
+	})
 
 	
-	$('.button-generate').addEventListener('click', function() {
+	$$('.button-generate').addEventListener('click', function() {
 		// создаем или находим canvas
 		var canvas = document.getElementById('canvas');
 		// получаем его 2D контекст
@@ -45,8 +47,8 @@ var analizePixels = function(canvasPixels){
 	indexCol = 0,
 	originalWidth = 0,
 	customWidth = 0,
-	width = $('.markup').width,
-	height = $('.markup').height;
+	width = $('.markup').width(),
+	height = $('.markup').height();
 	/*width = 0, height = 0;*/
 	globalHeight = height;
 	globalWidth = width;
@@ -86,7 +88,7 @@ var analizePixels = function(canvasPixels){
 
 		}
 	customDataMass = pixMas;
-	/*outPut();*/
+	outPut();
 	algorithmFindContur();
 }
 
@@ -107,7 +109,7 @@ var analizePixels = function(canvasPixels){
 			}
 			htmlTemplate+="</br>";
 		}
-		$('.ouput-mass').append(htmlTemplate);
+		$('.ouput-mass').html(htmlTemplate);
 	};
 
 
@@ -171,7 +173,7 @@ var analizePixels = function(canvasPixels){
 		} else {
 			console.log("i finish");
 			var data = getDataFromImgs(),
-            outputCont = $('.result');
+            outputCont = $$('.result');
 
 	        for(var i = 0, len = data.length; i < len; i += 1) {
 	            outputCont.appendChild(render(data[i]));
@@ -226,11 +228,26 @@ var setToZero = function(){
 	resultFromPhoto1[index]['pos']["tr"] = {};
 	resultFromPhoto1[index]['pos']["tr"]["x"] = maxCol;
 	resultFromPhoto1[index]['pos']["tr"]["y"] = minRow;
-
+	var count = 0;
 	for (var i=minRow; i< maxRow; i++){
 		for (var j = minCol; j < maxCol; j++){
+			if (customDataMass[i][j] == 1){
+				count++;
+			}
 			customDataMass[i][j] = 0;
 		}
+	}
+	var sqare = (maxCol-minCol)*(maxRow-minRow);
+	if (count >= (sqare/3)*2 && count !=0 && sqare != 0){
+		console.log("button")
+		console.log("count = "+count);
+		console.log("sqare = "+sqare);
+	}
+
+	if (count >= (sqare/2) && count < (sqare/3)*2 && count !=0 && sqare != 0){
+		console.log("list")
+		console.log("count = "+count);
+		console.log("sqare = "+sqare);
 	}
 
 	resultStack = [];

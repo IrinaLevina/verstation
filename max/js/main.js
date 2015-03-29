@@ -50,11 +50,11 @@ function getDataFromImgs(files) {
     return generalResult;
 }
 
-var $ = function(selector, parent) {
+var $$ = function(selector, parent) {
     return (document || parent).querySelector(selector)
 };
 
-var $$ = function(selector, parent) {
+var $$$$ = function(selector, parent) {
     return (document || parent).querySelectorAll(selector)
 };
 
@@ -163,7 +163,7 @@ window.addEventListener('load', function() {
     }, 0);
 
     setTimeout(function() {
-        var texts = $$('.welcome__t__row');
+        var texts = $$$$('.welcome__t__row');
         for(var i = 0, len = texts.length; i < len; i += 1) {
             (function(i) {
                 setTimeout(function() {
@@ -171,18 +171,18 @@ window.addEventListener('load', function() {
                 }, 100 * i);
                 if (i === texts.length - 1) {
                     setTimeout(function() {
-                        $('.welcome__bt').classList.add('welcome__bt_show')
+                        $$('.welcome__bt').classList.add('welcome__bt_show')
                     }, 1100);
                 }
             }(i));
         }
     }, 1500);
 
-/*    $('#files').addEventListener('change', function(event) {
+/*    $$('$$files').addEventListener('change', function(event) {
         var files = event.target.files;
 
         var data = getDataFromImgs(files),
-            outputCont = $('.result');
+            outputCont = $$('.result');
 
         for(var i = 0, len = data.length; i < len; i += 1) {
             outputCont.appendChild(render(data[i]));
@@ -193,20 +193,20 @@ window.addEventListener('load', function() {
     }, false);*/
 }, false);
 
-$('#edit-sizes').addEventListener('change', function() {
+$$('#edit-sizes').addEventListener('change', function() {
     if (!dragElems) {
         startEdit()
     }
 }, false);
 
-$('#edit-text').addEventListener('change', function() {
+$$('#edit-text').addEventListener('change', function() {
     if (dragElems) {
         dragElems.unset();
         dragElems = null;
     }
 }, false);
 
-$('#view-source').addEventListener('change', function() {
+$$('#view-source').addEventListener('change', function() {
     if (dragElems) {
         dragElems.unset();
         dragElems = null;
@@ -214,12 +214,12 @@ $('#view-source').addEventListener('change', function() {
 }, false);
 
 
-$('body').addEventListener('click', function(event) {
-    var targetShapes = $$('.result div');
+$$('body').addEventListener('click', function(event) {
+    var targetShapes = $$$$('.result div');
     for(var i = 0, len = targetShapes.length; i < len; i += 1) {
         targetShapes[i].setAttribute('contenteditable', false);
     }
-    if ($('#edit-text').checked === true) {
+    if ($$('#edit-text').checked === true) {
         event.target.setAttribute('contenteditable', true);
     }
 }, false);

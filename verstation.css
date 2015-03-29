@@ -1,7 +1,30 @@
 .hidden{ display: none; }
-.ouput-mass{ font-size: 1px; }
+.ouput-mass{ font-size: 1px;   position: relative; float: right; right: 55px;  top: 70px;}
 #markup {
     max-width: 1000px;
     max-height: 1000px;
 }
 .canvas-wrapper{ display: none}
+
+img.pss-img {
+    -webkit-transform: rotateZ(5deg) translateX(5%);    
+    transform: rotateZ(27deg) translateX(26%);    
+    -webkit-transition: all 0.1s;    transition: all 0.1s;
+    height: 335px;
+    position: absolute;
+    bottom: 0px;
+    /* display: none; */
+    left: -52px;
+}
+.pss-title {
+    position: absolute;
+    bottom: 5px;
+    left: 128px;
+    background: rgba(196, 79, 79, 0.58);
+    color: #311515;
+    padding: 20px;
+    font-size: 25px;
+    width: 275px;
+    border-radius: 20px;
+    text-align: center;
+}
