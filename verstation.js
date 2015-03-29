@@ -212,26 +212,28 @@ var setToZero = function(){
 	resultFromPhoto1[index];
 	resultFromPhoto1[index]['pos'] = {};
 	resultFromPhoto1[index]['pos']["br"] = {};
-	resultFromPhoto1[index]['pos']["br"]["x"] = maxRow;
-	resultFromPhoto1[index]['pos']["br"]["y"] = maxCol;
+	resultFromPhoto1[index]['pos']["br"]["x"] = maxCol;
+	resultFromPhoto1[index]['pos']["br"]["y"] = maxRow;
 
 	resultFromPhoto1[index]['pos']["bl"] = {};
-	resultFromPhoto1[index]['pos']["bl"]["x"] = maxRow;
-	resultFromPhoto1[index]['pos']["bl"]["y"] = minCol;
+	resultFromPhoto1[index]['pos']["bl"]["x"] = minCol;
+	resultFromPhoto1[index]['pos']["bl"]["y"] = maxRow;
 
 	resultFromPhoto1[index]['pos']["tl"] = {};
-	resultFromPhoto1[index]['pos']["tl"]["x"] = minRow;
-	resultFromPhoto1[index]['pos']["tl"]["y"] = minCol;
+	resultFromPhoto1[index]['pos']["tl"]["x"] = minCol;
+	resultFromPhoto1[index]['pos']["tl"]["y"] = minRow;
 
 	resultFromPhoto1[index]['pos']["tr"] = {};
-	resultFromPhoto1[index]['pos']["tr"]["x"] = minRow;
-	resultFromPhoto1[index]['pos']["tr"]["y"] = maxCol;
+	resultFromPhoto1[index]['pos']["tr"]["x"] = maxCol;
+	resultFromPhoto1[index]['pos']["tr"]["y"] = minRow;
 
 	for (var i=minRow; i< maxRow; i++){
 		for (var j = minCol; j < maxCol; j++){
 			customDataMass[i][j] = 0;
 		}
 	}
+
+	resultStack = [];
 	/*outPut();*/
 	/*$('.ouput-mass').html(htmlTemplate);
 	$('.ouput-mass').append(htmlTemplate2);*/
