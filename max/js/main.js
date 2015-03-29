@@ -250,15 +250,42 @@
         $('.copy').classList.add('copy_show');
     }, false);
 
+    var start_button = document.createElement('div'),
+        final_span = document.createElement('span'),
+        interim_span = document.createElement('span'),
+        recognizing = false, // флаг идет ли распознование
+        final_transcript = '';
+    start_button.className = 'start_btn';
+    final_span.className='final_span';
+    interim_span.className='interim_span';
+    start_button.style.display = "none";
+
+
 
     $('body').addEventListener('click', function(event) {
         var targetShapes = $$('.result__markup div');
-        for(var i = 0, len = targetShapes.length; i < len; i += 1) {
-            targetShapes[i].setAttribute('contenteditable', false);
+        if(!event.target.classList.contains('start_btn')){
+            for(var i = 0, len = targetShapes.length; i < len; i += 1) {
+                targetShapes[i].setAttribute('contenteditable', false);
+                //targetShapes[i].removeChild(start_button);
+                start_button.style.display='none';
+                //event.target.removeChild(interim_span);
+                //event.target.removeChild(final_span);
+
+            }
         }
-        if ($('#edit-text').checked === true && event.target.classList.contains('ghr')) {
+
+        if ($('#edit-text').checked === true && !event.target.classList.contains('start_btn')
+            && (event.target.classList.contains('ghr'))) {
             event.target.setAttribute('contenteditable', true);
+            event.target.appendChild(start_button);
+            start_button.style.display='block';
+            interim_span.
+            event.target.appendChild(interim_span);
+            event.target.appendChild(final_span);
+
         }
+
     }, false);
 
     $('.copy-popover-close').addEventListener('click', function(event) {
@@ -274,4 +301,82 @@
             $('.ouput-mass').innerHTML = '';
         }
     }, false);
+
+
+
+// проверяем поддержку speach api
+    if (!('webkitSpeechRecognition' in window)) {
+
+        start_button.style.display = "none";
+
+    } else { /* инициализируем api */
+
+        /* создаем объект 	*/
+        var recognition = new webkitSpeechRecognition();
+
+        /* базовые настройки объекта */
+
+        recognition.lang = 'ru'; // язык, который будет распозноваться. Значение - lang code
+        recognition.continuous = true; // не хотим чтобы когда пользователь прикратил говорить, распознование закончилось
+        recognition.interimResults = true;  // хотим видеть промежуточные результаты. Т.е. мы можем некоторое время видеть слова, которые еще не были откорректированы
+
+        /* метод вызывается когда начинается распознование */
+        recognition.onstart = function () {
+
+            recognizing = true;
+            start_button.style.background = 'url(../max/img/mic-animate.gif)'; // меняем вид кнопки
+        };
+        /* обработчик ошибок */
+        recognition.onerror = function (event) {
+            if (event.error == 'no-speech') {
+                start_button.style.background = 'url(../max/img/mic.gif)';
+            }
+            if (event.error == 'audio-capture') {
+                start_button.style.background = 'url(../max/img/mic.gif)';
+            }
+        };
+
+        /* метод вызывается когда распознование закончено */
+        recognition.onend = function () {
+            recognizing = false;
+            start_button.style.background = 'url(../max/img/mic.gif)';
+        };
+
+        /*
+         метод вызывается после каждой сказанной фразы. Параметра event используем атрибуты:
+         - resultIndex - нижний индекс в результирующем массиве
+         - results - массив всех результатов в текущей сессии
+         */
+        recognition.onresult = function (event) {
+
+            var interim_transcript = '';
+
+            /*
+             обход результирующего массива
+             */
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+
+                /* если фраза финальная (уже откорректированная) сохраняем в конечный результат */
+                if (event.results[i].isFinal) {
+                    final_transcript += event.results[i][0].transcript;
+                } else { /* иначе сохраянем в промежуточный */
+                    interim_transcript += event.results[i][0].transcript;
+                }
+            }
+            final_span.innerHTML = final_transcript;
+
+            interim_span.innerHTML = interim_transcript;
+        };
+    }
+
+    /* обработчик клика по микрофону */
+    start_button.addEventListener('click', function(){
+        if (recognizing) { // если запись уже идет, тогда останавливаем
+            recognition.stop();
+            return;
+        }
+
+        recognition.start();
+    });
+
 }());
