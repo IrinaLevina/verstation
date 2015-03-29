@@ -73,7 +73,7 @@
                 width: (shapes[i].pos.tr.x / sheetHeight * 100) - (shapes[i].pos.tl.x / sheetWidth * 100),
                 height: (shapes[i].pos.bl.y / sheetWidth * 100) - (shapes[i].pos.tl.y / sheetHeight * 100)
             };
-            
+
             if (styleRules.height>0.5 || styleRules.width>0.5){
                 var elem = document.createElement('div');
                 elem.classList.add('ghr');
