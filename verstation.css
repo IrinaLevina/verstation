@@ -13,7 +13,7 @@ img.pss-img {
     -webkit-transition: all 0.1s;    transition: all 0.1s;
     height: 335px;
     position: absolute;
-    bottom: 0px;
+    bottom: -40px;
     /* display: none; */
     left: -52px;
 }
