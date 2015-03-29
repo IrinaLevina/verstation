@@ -172,6 +172,7 @@ var analizePixels = function(canvasPixels){
 			algorithmFindContur();
 		} else {
 			console.log("i finish");
+			
 			var data = getDataFromImgs(),
             outputCont = $('.result');
 
