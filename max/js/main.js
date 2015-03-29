@@ -61,7 +61,7 @@
         return (document || parent).querySelectorAll(selector)
     };
 
-    function render(shapes, container) {
+    window.render = function(shapes, container) {
         if (!container) {
             container = document.createDocumentFragment();
         }
