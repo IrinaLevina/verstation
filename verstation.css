@@ -29,3 +29,25 @@ img.pss-img {
     border-radius: 20px;
     text-align: center;
 }
+.nav-btn {
+    position: absolute;
+    bottom: 30px;
+      width: 200px;
+  text-align: center;
+  	text-decoration: none;
+    right: 30px;
+    z-index: 2;
+    padding: 20px;
+    color: #fff;
+    background: #d3775f;            
+    border: 1px solid #390d0c;
+    font-size: 20px;
+}
+
+.do-beauty {
+	bottom: 110px;
+}
+
+.nav-btn:hover {
+    cursor: pointer;    background: #ab5e50;
+}

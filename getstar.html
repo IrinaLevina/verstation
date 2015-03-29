@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="verstation.js"></script>
+	<script type='text/javascript' src='tinycolor.js'></script>
+	<link rel="stylesheet" href="verstation.css"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script type='text/javascript'>
+		var color = tinycolor("red");
+	</script>
+	<style>
+		.big_block{width: 400px; padding: 0 45px 0; min-height: 100vh; display: inline-block; vertical-align: top; border-right: 1px solid #ccc;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;}
+		.button-generate{width: 300px;line-height: 40px;text-align: center;color: #fff;background: #E22828;}
+		.button-generate-html{width: 300px;line-height: 40px;text-align: center;color: #fff;background: #E22828;}
+		.star-html{margin: 10px 0 0 50px; position: relative; display: none;}
+		.head {	position: relative;	width: 130px;z-index: 3;}
+		.hair {position: absolute;background: #842222;width: 100%;height: 100px;top: 0;border-radius: 999em 999em 0 0;}
+		.hair_long {  position: absolute;background: #842222;width: 140px;left: -5px;height: 265px;top: 0;border-radius: 999em 999em 0 0;z-index: 2;}
+		.face {position: relative;top: 59px;height: 120px;background: #F1D7B3;width: 100%;border-radius: 0 0 999em 999em;}
+		.eyes {position: relative;width: 100%;}
+		.eye {position: absolute;background: #fff;height: 10px;width: 10px;left: 25%;top: 20px;border-radius: 999em;		}
+		.eye:nth-child(1) {left: auto;right: 25%;		}
+		.eye:before {background: #00f;border-radius: 999em;height: 5px;width: 5px;display: block;content: '';top: 3px;left: 3px;position: absolute;	}
+		.eye:after {height: 3px;background: #a52a2a;width: 15px;position: absolute;top: -2px;left: -2px;content: '';}
+		.nose {position: absolute;top: 25px;height: 20px;width: 10px;left: 45%;border: 3px solid #be935a;border-top: 0;border-left: 0;border-radius: 0 0 5px 0;-webkit-transform: rotate(-20deg);-ms-transform: rotate(-20deg);transform: rotate(-20deg);}
+		.mouth{  position: absolute;bottom: 12px;left: 29px;right: 0;margin: 0 auto;}
+		.boobs{  position: absolute;top: 123px;width: 170px;left: -23px;}
+		.ouput-mass{float: none; top: 0;}
+	</style>
+
+	<title>Verstation</title>
+</head>
+<body>
+<div class="big_block">
+	<div class="button-generate">Сгенерировать знаменитость</div>
+	<img src="markup3.jpg" id="markup" class="markup hidden">
+	<div class="canvas-wrapper">
+		<canvas id="canvas" width="1000" height="1000" ></canvas>
+	</div>
+	<br>
+	<div class="ouput-mass"></div>
+</div>
+<div class="big_block">
+	<div class="button-generate-html">Сверстать знаменитость по массиву</div>
+	<div class="star-html">
+		<div class="hair_long"></div>
+		<div class="head">
+			<div class="hair"></div>
+
+			<div class="face">
+
+				<div class="eyes">
+					<div class="eye"></div>
+					<div class="eye"></div>
+				</div>
+
+				<div class="nose"></div>
+
+				<div class="mouth"><img src="lips.png" width="75px"/></div>
+				<img src="boobs.png" class="boobs"/>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('.button-generate-html').on('click', function(){
+		$('.star-html').show();
+	})
+</script>
+</body>
+</html>
