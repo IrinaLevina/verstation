@@ -4,7 +4,7 @@
 
     var templateHTML = '<!DOCTYPE html>\n <html>\n <head>\n <meta charset="utf-8">\n <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">\n <style>\n * {\n -webkit-box-sizing: border-box;\n -moz-box-sizing: border-box;\n box-sizing: border-box;\n }\n \n \n ::-moz-selection {\n background: #b3d4fc;\n text-shadow: none;\n }\n \n ::selection {\n background: #b3d4fc;\n text-shadow: none;\n }\n </style>\n </head>\n <body>\n \n {htmlstring}\n \n </body>\n </html>';
 
-    function getDataFromImgs(files) {
+    window.getDataFromImgs = function(files) {
         /*var resultFromPhoto1 = [{
          pos: {
          tl: {
@@ -90,7 +90,7 @@
 
     var dragElems = null;
 
-    function startEdit() {
+    window.startEdit = function() {
         var offset = { x: 0, y: 0 };
 
         var resizemove = function (event) {
