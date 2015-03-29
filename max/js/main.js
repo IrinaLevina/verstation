@@ -170,7 +170,7 @@
             onend: dragOnEnd
         };
 
-        dragElems = interact('.result__markup div')
+        dragElems = interact('.result__markup *')
             .resizable({
                 edges: { left: true, right: true, bottom: true, top: true }
             })
