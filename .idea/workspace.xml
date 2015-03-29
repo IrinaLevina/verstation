@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2c956271-bf59-44bc-8748-15940c1f245c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/max/index.html" afterPath="$PROJECT_DIR$/max/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/max/css/main.css" afterPath="$PROJECT_DIR$/max/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/max/js/main.js" afterPath="$PROJECT_DIR$/max/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/max/verstation.js" afterPath="$PROJECT_DIR$/max/verstation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="verstation.iws" />
@@ -28,7 +28,7 @@
     <favorites_list name="verstation" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5144468">
+    <splitter split-orientation="horizontal" split-proportion="0.48696265">
       <split-first>
         <leaf>
           <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
@@ -41,21 +41,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/max/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.44466403" vertical-offset="0" max-vertical-offset="720">
-                  <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+                <state vertical-scroll-proportion="-13.583333" vertical-offset="274" max-vertical-offset="855">
+                  <caret line="40" column="42" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="42" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/max/css/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.094339624" vertical-offset="3550" max-vertical-offset="4455">
+                  <caret line="240" column="16" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -65,21 +65,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/max/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3450">
-                  <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="verstation.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/max/verstation.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3962264" vertical-offset="0" max-vertical-offset="4440">
-                  <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+                <state vertical-scroll-proportion="0.745283" vertical-offset="2980" max-vertical-offset="3570">
+                  <caret line="225" column="27" selection-start-line="225" selection-start-column="27" selection-end-line="225" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -100,9 +90,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/max/verstation.js" />
+        <option value="3bbcf944/scratch.1" />
         <option value="$PROJECT_DIR$/max/index.html" />
         <option value="$PROJECT_DIR$/max/js/main.js" />
-        <option value="$PROJECT_DIR$/max/verstation.js" />
+        <option value="$PROJECT_DIR$/max/css/main.css" />
       </list>
     </option>
   </component>
@@ -183,6 +175,7 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="com.intellij.ide.scratch.ScratchpadManager" value="HTML" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -336,34 +329,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/max/css/main.css">
+    <entry file="scratchpad://3bbcf944/scratch">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="530">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="scratchpad://3bbcf944/scratch.1">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17786561" vertical-offset="0" max-vertical-offset="525">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/max/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44466403" vertical-offset="0" max-vertical-offset="720">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        <state vertical-scroll-proportion="-13.583333" vertical-offset="274" max-vertical-offset="855">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/max/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3450">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.745283" vertical-offset="2980" max-vertical-offset="3570">
+          <caret line="225" column="27" selection-start-line="225" selection-start-column="27" selection-end-line="225" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/max/verstation.js">
+    <entry file="file://$PROJECT_DIR$/max/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3962264" vertical-offset="0" max-vertical-offset="4440">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.094339624" vertical-offset="3550" max-vertical-offset="4455">
+          <caret line="240" column="16" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
           <folding />
         </state>
       </provider>

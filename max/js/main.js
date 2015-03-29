@@ -2,6 +2,8 @@
     var sheetHeight = 800,
         sheetWidth = 800;
 
+    var templateHTML = '<!DOCTYPE html>\n <html>\n <head>\n <meta charset="utf-8">\n <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">\n <style>\n * {\n -webkit-box-sizing: border-box;\n -moz-box-sizing: border-box;\n box-sizing: border-box;\n }\n \n \n ::-moz-selection {\n background: #b3d4fc;\n text-shadow: none;\n }\n \n ::selection {\n background: #b3d4fc;\n text-shadow: none;\n }\n </style>\n </head>\n <body>\n \n {htmlstring}\n \n </body>\n </html>';
+
     function getDataFromImgs(files) {
         /*var resultFromPhoto1 = [{
          pos: {
@@ -148,7 +150,7 @@
             onend: dragOnEnd
         };
 
-        dragElems = interact('.result div')
+        dragElems = interact('.markup div')
             .resizable({
                 edges: { left: true, right: true, bottom: true, top: true }
             })
@@ -210,16 +212,22 @@
             dragElems.unset();
             dragElems = null;
         }
+        $('#copyhtml').value = templateHTML.replace(/{htmlstring}/, $('.markup').innerHTML);
+        $('.copy').classList.add('copy_show');
     }, false);
 
 
     $('body').addEventListener('click', function(event) {
-        var targetShapes = $$('.result div');
+        var targetShapes = $$('.markup div');
         for(var i = 0, len = targetShapes.length; i < len; i += 1) {
             targetShapes[i].setAttribute('contenteditable', false);
         }
         if ($('#edit-text').checked === true) {
             event.target.setAttribute('contenteditable', true);
         }
+    }, false);
+
+    $('.copy-popover-close').addEventListener('click', function(event) {
+        $('.copy').classList.remove('copy_show');
     }, false);
 }());

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/main.css"/>
         <script type="text/javascript" src="verstation.js"></script>
         <script type='text/javascript' src='tinycolor.js'></script>
-        <link rel="stylesheet" href="verstation.css"></link>
+        <link rel="stylesheet" href="verstation.css">
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         </head>
     <body>
@@ -34,7 +34,16 @@
                 <input type="radio" id="view-source" name="radios" value="true">
                 <label for="view-source">view source</label>
             </menu>
+            <div class="markup"></div>
         </main>
+
+        <div class="copy">
+            <div class="copy-popover-close">x</div>
+            <div class="copy-popover">
+                <h2 class="copy-popover__t">Copy code</h2>
+                <textarea class="copy-popover__ta" id="copyhtml"></textarea>
+            </div>
+        </div>
 
         <script src="js/interact-1.2.4.min.js"></script>
         <script src="js/main.js"></script>
