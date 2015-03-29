@@ -21,13 +21,14 @@ $(document).ready(function(){
 	});
 
 
-	$('.button-generate input[type="file"]').change(function(event) {
+	/*$('.button-generate input[type="file"]').change(function(event) {*/
+		$('.button-generate').click(function(event) {
 		// создаем или находим canvas
 		var canvas = document.getElementById('canvas');
 		// получаем его 2D контекст
 		var context = canvas.getContext('2d');
-		var img = new Image;
-		img.src = URL.createObjectURL(event.target.files[0]);
+		/*var img = new Image;
+		img.src = URL.createObjectURL(event.target.files[0]);*/
 		img.onload = function() {
 			// помещаем изображение в контекст
 			context.drawImage(img, 0, 0);
