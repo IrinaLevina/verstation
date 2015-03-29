@@ -21,7 +21,7 @@ $(document).ready(function(){
 	})
 
 	
-	$$('.button-generate').addEventListener('click', function() {
+	$('.button-generate').on('click', function() {
 		// создаем или находим canvas
 		var canvas = document.getElementById('canvas');
 		// получаем его 2D контекст
@@ -173,7 +173,7 @@ var analizePixels = function(canvasPixels){
 		} else {
 			console.log("i finish");
 			var data = getDataFromImgs(),
-            outputCont = $$('.result');
+            outputCont = $('.result');
 
 	        for(var i = 0, len = data.length; i < len; i += 1) {
 	            outputCont.appendChild(render(data[i]));

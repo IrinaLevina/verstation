@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
@@ -18,6 +19,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow: hidden;
 }
 body {
     opacity: 0;
@@ -26,7 +28,7 @@ body {
     -ms-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Calibri, Arial, sans-serif;
 }
 .body_show {
     opacity: 1;
@@ -50,7 +52,6 @@ input[type="file"] {
 .welcome__t {
     font-size: 40px;
     width: 50%;
-    text-shadow: 2px 1px #999;
     text-transform: uppercase;
     margin-bottom: 100px;
 }
@@ -164,8 +165,9 @@ input[type="file"] {
 }
 
 .result {
+    z-index: 1;
     position: absolute;
-    background: rgb(64, 57, 57);
+    background: #f8f8f8;
     height: 100%;
     width: 100%;
     top: 100%;
@@ -183,10 +185,12 @@ input[type="file"] {
 .result_show {
     top: 0;
 }
-.result div {
+.result__markup {
+    height: 100%;
+}
+.result__markup div {
     position: absolute;
     border: 4px solid #9FB0AB;
-    color: #fff;
     padding: 3px;
 }
 .menu {
@@ -236,4 +240,57 @@ input[type=radio]:checked + label, input[type=checkbox]:checked + label{
     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
     background-color:#e0e0e0;
+}
+.copy {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: rgba(0,0,0,0.75);
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+.copy_show {
+    z-index: 2;
+    opacity: 1;
+}
+.copy-popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 600px;
+    height: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.copy-popover__ta {
+    resize: none;
+    width: 100%;
+    height: 300px;
+}
+.copy-popover__t {
+    text-align: center;
+}
+.copy-popover-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
 }
