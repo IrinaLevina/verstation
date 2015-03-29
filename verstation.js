@@ -251,7 +251,7 @@ var setToZero = function(){
 /*		console.log("list")
 		console.log("count = "+count);
 		console.log("sqare = "+sqare);*/
-		resultFromPhoto1[index]['pos']["type"] = "list";
+		resultFromPhoto1[index]['pos']["type"] = "header";
 	}
 
 	resultStack = [];
