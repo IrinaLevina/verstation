@@ -267,7 +267,11 @@
 
     $('.result__back').addEventListener('click', function(event) {
         $('.result').classList.remove('result_show');
-        $('#files').value = '';
-        $('.ouput-mass').innerHTML = '';
+        if ($('#files')) {
+            $('#files').value = '';
+        }
+        if ($('.ouput-mass')) {
+            $('.ouput-mass').innerHTML = '';
+        }
     }, false);
 }());

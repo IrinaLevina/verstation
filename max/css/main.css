@@ -313,4 +313,5 @@ input[type=radio]:checked + label, input[type=checkbox]:checked + label{
     position: absolute;
     bottom: 20px;
     left: 20px;
+    display: none;
 }
