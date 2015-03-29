@@ -11,11 +11,11 @@ var globalCurrentDirection = 'left',
 $(document).ready(function(){
 	// создаем или находим изображение
 	var img = $('.markup'),
-	width = $('.markup').width,
-	height = $('.markup').height;
+	width = $('.markup').width(),
+	height = $('.markup').height();
 	var markup = document.getElementById("markup");
 	
-	$('.button-generate').addEventListener('click', function() {
+	$('.button-generate').on('click', function() {
 		// создаем или находим canvas
 		var canvas = document.getElementById('canvas');
 		// получаем его 2D контекст
