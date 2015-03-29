@@ -5,7 +5,7 @@ var globalCurrentDirection = 'left',
 	nextPoint = {},
 	resultStack = new Array(),
 	firstPoint = {},
-	figuresList = [];
+	resultFromPhoto1 = [];
 	globalWidth = null,
 	globalHeight = null;
 $(document).ready(function(){
@@ -14,6 +14,10 @@ $(document).ready(function(){
 	globalWidth = $('.markup').width,
 	globalHeight = $('.markup').height;
 	var markup = document.getElementById("markup");
+
+
+
+
 	
 	$('.button-generate').addEventListener('click', function() {
 		// создаем или находим canvas
@@ -166,6 +170,15 @@ var analizePixels = function(canvasPixels){
 			algorithmFindContur();
 		} else {
 			console.log("i finish");
+			var data = getDataFromImgs(),
+            outputCont = $('.result');
+
+	        for(var i = 0, len = data.length; i < len; i += 1) {
+	            outputCont.appendChild(render(data[i]));
+	        }
+
+	        outputCont.classList.add('result_show');
+	        startEdit();
 		}
 	}
 
@@ -194,24 +207,25 @@ var setToZero = function(){
 		}
 		customDataMass[row][col] = 0;
 	}
-	var index = figuresList.length;
-	figuresList[index]= {};
-	figuresList[index]['fiqure'] = {};
-	figuresList[index]['fiqure']["r1"] = {};
-	figuresList[index]['fiqure']["r1"]["x"] = maxRow;
-	figuresList[index]['fiqure']["r1"]["y"] = maxCol;
+	var index = resultFromPhoto1.length;
+	resultFromPhoto1[index]= {};
+	resultFromPhoto1[index];
+	resultFromPhoto1[index]['pos'] = {};
+	resultFromPhoto1[index]['pos']["br"] = {};
+	resultFromPhoto1[index]['pos']["br"]["x"] = maxRow;
+	resultFromPhoto1[index]['pos']["br"]["y"] = maxCol;
 
-	figuresList[index]['fiqure']["r2"] = {};
-	figuresList[index]['fiqure']["r2"]["x"] = maxRow;
-	figuresList[index]['fiqure']["r2"]["y"] = minCol;
+	resultFromPhoto1[index]['pos']["bl"] = {};
+	resultFromPhoto1[index]['pos']["bl"]["x"] = maxRow;
+	resultFromPhoto1[index]['pos']["bl"]["y"] = minCol;
 
-	figuresList[index]['fiqure']["r3"] = {};
-	figuresList[index]['fiqure']["r3"]["x"] = minRow;
-	figuresList[index]['fiqure']["r3"]["y"] = minCol;
+	resultFromPhoto1[index]['pos']["tl"] = {};
+	resultFromPhoto1[index]['pos']["tl"]["x"] = minRow;
+	resultFromPhoto1[index]['pos']["tl"]["y"] = minCol;
 
-	figuresList[index]['fiqure']["r4"] = {};
-	figuresList[index]['fiqure']["r4"]["x"] = minRow;
-	figuresList[index]['fiqure']["r4"]["y"] = maxCol;
+	resultFromPhoto1[index]['pos']["tr"] = {};
+	resultFromPhoto1[index]['pos']["tr"]["x"] = minRow;
+	resultFromPhoto1[index]['pos']["tr"]["y"] = maxCol;
 
 	for (var i=minRow; i< maxRow; i++){
 		for (var j = minCol; j < maxCol; j++){

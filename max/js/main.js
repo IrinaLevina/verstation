@@ -2,7 +2,7 @@ var sheetHeight = 800,
     sheetWidth = 800;
 
 function getDataFromImgs(files) {
-    var resultFromPhoto1 = [{
+    /*var resultFromPhoto1 = [{
         pos: {
             tl: {
                 x: 10,
@@ -40,7 +40,7 @@ function getDataFromImgs(files) {
                 y: 500
             }
         }
-    }];
+    }];*/
 
     var resultFromPhoto2 = [];
 
