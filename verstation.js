@@ -9,6 +9,12 @@ var globalCurrentDirection = 'left',
 	globalWidth = null,
 	globalHeight = null;
 $(document).ready(function(){
+	//get beauty
+	$('.nav-btn.do-beauty').on('click', function(){
+		$('.get-beauty._flower').toggle();
+		$('.get-beauty._fly').toggleClass('_show');
+	});
+
 	// создаем или находим изображение
 	var img = $('.markup'),
 	globalWidth = $('.markup').width(),
@@ -364,3 +370,4 @@ var move = function(point, direction){
 	}
 	return point;
 }
+
