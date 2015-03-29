@@ -1,5 +1,5 @@
 .hidden{ display: none; }
-.ouput-mass{   font-size: 1px;   position: relative;  float: right;  right: 7px;  color: #857B7B;  z-index: 2;
+.ouput-mass{   font-size: 1px;   position: absolute;  float: right;  right: 250px;  color: #857B7B;  z-index: 2;
   top: 70px;}
 #markup {
     max-width: 1000px;

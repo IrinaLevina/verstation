@@ -27,49 +27,52 @@ $(document).ready(function(){
 	});
 
 
-	//$('.button-generate input[type="file"]').change(function(event) {
-	//	// создаем или находим canvas
-	//	var canvas = document.getElementById('canvas');
-	//	// получаем его 2D контекст
-	//	var context = canvas.getContext('2d');
-	//	var img = new Image;
-	//	img.src = URL.createObjectURL(event.target.files[0]);
-	//	img.onload = function() {
-	//		canvas.onload = function() {
-	//			console.log('ok')
-	//		}
-	//		document.body.appendChild(canvas);
-	//		// помещаем изображение в контекст
-	//		context.drawImage(img, 0, 0);
-	//		// получаем объект, описывающий внутреннее состояние области контекста
-	//		var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
-	//		var pixels = imageData.data;
-	//		datamass = pixels;
-	//		analizePixels(pixels);
-	//		/*		// фильтруем
-	//		 imageDataFiltered = sepia(imageData);
-	//		 // кладем результат фильтрации обратно в canvas
-	//		 context.putImageData(imageDataFiltered, 0, 0);*/
-	//	}
-	//});
 
-	$('.button-generate').on('click', function() {
+	/*$('.button-generate input[type="file"]').change(function(event) {*/
+
+	$('.button-load input[type="file"]').change(function(event) {
 		// создаем или находим canvas
 		var canvas = document.getElementById('canvas');
 		// получаем его 2D контекст
 		var context = canvas.getContext('2d');
-		// помещаем изображение в контекст
-		context.drawImage(markup, 0, 0);
-		// получаем объект, описывающий внутреннее состояние области контекста
-		var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
-		var pixels = imageData.data;
-		datamass = pixels;
-		analizePixels(pixels);
-/*		// фильтруем
-		imageDataFiltered = sepia(imageData);
-		// кладем результат фильтрации обратно в canvas
-		context.putImageData(imageDataFiltered, 0, 0);*/
+		var img = new Image;
+		img.src = URL.createObjectURL(event.target.files[0]);
+		img.onload = function() {
+			canvas.onload = function() {
+				console.log('ok')
+			}
+			document.body.appendChild(canvas);
+			// помещаем изображение в контекст
+			context.drawImage(img, 0, 0);
+			// получаем объект, описывающий внутреннее состояние области контекста
+			var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
+			var pixels = imageData.data;
+			datamass = pixels;
+			analizePixels(pixels);
+			/*		// фильтруем
+			 imageDataFiltered = sepia(imageData);
+			 // кладем результат фильтрации обратно в canvas
+			 context.putImageData(imageDataFiltered, 0, 0);*/
+		}
 	});
+
+	$('.button-generate').on('click', function() {
+		  // создаем или находим canvas
+		  var canvas = document.getElementById('canvas');
+		  // получаем его 2D контекст
+		  var context = canvas.getContext('2d');
+		  // помещаем изображение в контекст
+		  context.drawImage(markup, 0, 0);
+		  // получаем объект, описывающий внутреннее состояние области контекста
+		  var imageData = context.getImageData(0, 0, globalWidth, globalHeight);
+		  var pixels = imageData.data;
+		  datamass = pixels;
+		  analizePixels(pixels);
+		/*  // фильтруем
+		  imageDataFiltered = sepia(imageData);
+		  // кладем результат фильтрации обратно в canvas
+		  context.putImageData(imageDataFiltered, 0, 0);*/
+	 });
 });
 
 var analizePixels = function(canvasPixels){
