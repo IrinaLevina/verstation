@@ -177,10 +177,10 @@ var analizePixels = function(canvasPixels){
             outputCont = $('.result');
 
 	        for(var i = 0, len = data.length; i < len; i += 1) {
-	            outputCont.appendChild(render(data[i]));
+	            $('.result__markup').append(render(data[i]));
 	        }
 
-	        outputCont.classList.add('result_show');
+	        outputCont.addClass('result_show');
 	        startEdit();
 		}
 	}

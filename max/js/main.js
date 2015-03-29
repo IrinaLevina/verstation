@@ -74,6 +74,7 @@
                 height: (shapes[i].pos.bl.y / sheetWidth * 100) - (shapes[i].pos.tl.y / sheetHeight * 100)
             };
 
+
             var elem = document.createElement('div');
             elem.classList.add('ghr');
             //elem.setAttribute('contenteditable', true);
