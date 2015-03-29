@@ -238,17 +238,20 @@ var setToZero = function(){
 			customDataMass[i][j] = 0;
 		}
 	}
+	resultFromPhoto1[index]['pos']["type"] = "div";
 	var sqare = (maxCol-minCol)*(maxRow-minRow);
 	if (count >= (sqare/3)*2 && count !=0 && sqare != 0){
-		console.log("button")
+/*		console.log("button")
 		console.log("count = "+count);
-		console.log("sqare = "+sqare);
+		console.log("sqare = "+sqare);*/
+		resultFromPhoto1[index]['pos']["type"] = "button";
 	}
 
 	if (count >= (sqare/2) && count < (sqare/3)*2 && count !=0 && sqare != 0){
-		console.log("list")
+/*		console.log("list")
 		console.log("count = "+count);
-		console.log("sqare = "+sqare);
+		console.log("sqare = "+sqare);*/
+		resultFromPhoto1[index]['pos']["type"] = "list";
 	}
 
 	resultStack = [];
