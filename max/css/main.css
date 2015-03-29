@@ -205,6 +205,10 @@ input[type="file"] {
     background: -ms-linear-gradient(top,  #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%); /* W3C */
 }
+.result__markup h1 {
+    border-style: dotted;
+    text-align: center;
+}
 .menu {
     position: absolute;
     top: 10px;

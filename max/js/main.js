@@ -67,29 +67,40 @@
         }
 
         for(var i = 0, len = shapes.length; i < len; i += 1) {
-            if (/div|button/.test(shapes[i].pos.type)) {
-                var styleRules = {
-                    top: shapes[i].pos.tl.y / sheetHeight * 100,
-                    left: shapes[i].pos.tl.x / sheetWidth * 100,
-                    width: (shapes[i].pos.tr.x / sheetHeight * 100) - (shapes[i].pos.tl.x / sheetWidth * 100),
-                    height: (shapes[i].pos.bl.y / sheetWidth * 100) - (shapes[i].pos.tl.y / sheetHeight * 100)
-                };
+            var styleRules = {
+                top: shapes[i].pos.tl.y / sheetHeight * 100,
+                left: shapes[i].pos.tl.x / sheetWidth * 100,
+                width: (shapes[i].pos.tr.x / sheetHeight * 100) - (shapes[i].pos.tl.x / sheetWidth * 100),
+                height: (shapes[i].pos.bl.y / sheetWidth * 100) - (shapes[i].pos.tl.y / sheetHeight * 100)
+            };
 
 
-                if (styleRules.height>0.5 || styleRules.width>0.5){
-                    var elem = document.createElement(shapes[i].pos.type);
-                    if (shapes[i].pos.type === 'button') {
+            if (styleRules.height>0.5 || styleRules.width>0.5){
+                var elem;
+                console.log(shapes[i].pos.type)
+                switch(shapes[i].pos.type) {
+                    case 'div':
+                        elem = document.createElement('div');
+                        break;
+                    case 'button':
+                        elem = document.createElement('button');
                         elem.innerHTML = 'I\'m a button';
-                    }
-                    elem.classList.add('ghr');
-                    //elem.setAttribute('contenteditable', true);
-                    for(var nameStyleRule in styleRules) {
-                        if (styleRules.hasOwnProperty(nameStyleRule)) {
-                            elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
-                        }
-                    }
-                    container.appendChild(elem);
+                        break;
+                    case 'header':
+                        console.log('ok')
+                        elem = document.createElement('h1');
+                        elem.innerHTML = 'I\'m a H1';
+                        break;
+
                 }
+                elem.classList.add('ghr');
+                //elem.setAttribute('contenteditable', true);
+                for(var nameStyleRule in styleRules) {
+                    if (styleRules.hasOwnProperty(nameStyleRule)) {
+                        elem.style[nameStyleRule] = styleRules[nameStyleRule] + '%';
+                    }
+                }
+                container.appendChild(elem);
             }
         }
 
@@ -159,7 +170,7 @@
             onend: dragOnEnd
         };
 
-        dragElems = interact('.result__markup div')
+        dragElems = interact('.result__markup *')
             .resizable({
                 edges: { left: true, right: true, bottom: true, top: true }
             })
