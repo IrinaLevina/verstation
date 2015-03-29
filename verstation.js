@@ -89,7 +89,7 @@ var analizePixels = function(canvasPixels){
 		}
 	customDataMass = pixMas;
 	outPut();
-	$('.do-beauty').removeClass("hidden");
+	$('.nav-btn').removeClass("hidden");
 	algorithmFindContur();
 }
 
