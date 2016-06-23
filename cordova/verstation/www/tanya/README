@@ -1,4 +1,0 @@
-run command "npm i http-server -g"
-run "http-server"
-Now you can use google speech API on localhost:8080
-
