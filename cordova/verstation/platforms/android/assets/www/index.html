@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,700,600,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>-->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <link rel="stylesheet" href="css/main.css"/>
+        <script type="text/javascript" src="js/verstation.js"></script>
+        <script type='text/javascript' src='js/tinycolor.js'></script>
+        <link rel="stylesheet" href="css/verstation.css">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        </head>
+    <body>
+
+        <img src="markup3.png" id="markup" class=" markup hidden">
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas" width="1000" height="1000" ></canvas>
+        </div>
+        <div class="welcome">
+            <h1 class="welcome__t">
+                <span class="welcome__t__row welcome__t__row_i0">Tiny and fast</span>
+                <span class="welcome__t__row welcome__t__row_i1">converter of images</span>
+                <span class="welcome__t__row welcome__t__row_i2">to web-pages</span>
+            </h1>
+
+          
+            <label class=" button-load">Select file..<input type="file" id="files"/></label>
+
+            
+        </div>
+        <main class="result">
+            <menu class="menu">
+                <input type="radio" id="edit-sizes" name="radios" value="all" checked>
+                <label for="edit-sizes">sizes</label>
+                <input type="radio" id="edit-text" name="radios"value="false">
+                <label for="edit-text">text</label>
+                <input type="radio" id="view-source" name="radios" value="true">
+                <label for="view-source">view source</label>
+            </menu>
+            <div class="result__markup"></div>
+            <button class="result__back">Go back</button>
+            <div class="ouput-mass" style="display: none;"></div>
+        </main>
+
+        
+
+
+        <div class="copy">
+            <div class="copy-popover-close">x</div>
+            <div class="copy-popover">
+                <h2 class="copy-popover__t">Copy the code</h2>
+                <textarea class="copy-popover__ta" id="copyhtml"></textarea>
+            </div>
+        </div>
+        <script src="js/interact-1.2.4.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
