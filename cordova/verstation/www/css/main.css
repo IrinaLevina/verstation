@@ -39,16 +39,37 @@ input[type="file"] {
 }
 
 .welcome {
-    padding-top: 100px;
+    padding: 100px 5%;
     background: url("../img/one1.jpg") no-repeat center center;
     /*background: #699fc1;*/
     background-size: cover;
-    padding-left: 5%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+}
+.language-select {
+    float: right;
+}
+.language-select_el {
+    padding: 10px;
+    border: 1px solid #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+.language-select_el.active {
+    background: rgba(255, 255, 255, 0.4);
+    cursor: default;
+}
+.language-select_el:hover {
+    background: rgba(255, 255, 255, 0.4);
 }
 .welcome__t {
     font-size: 40px;
