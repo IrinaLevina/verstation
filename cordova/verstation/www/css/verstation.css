@@ -1,11 +1,16 @@
 .hidden{ display: none; }
-.ouput-mass{   font-size: 1px;   position: absolute;  float: right;  right: 7px;  color: #857B7B;  z-index: 2;
-  top: 70px;}
+.ouput-mass{
+	font-size: 1px;
+	color: #857B7B;
+	z-index: 2;
+}
 #markup {
     max-width: 1000px;
     max-height: 1000px;
 }
-.canvas-wrapper{ display: none}
+.canvas-wrapper{
+	display: none;
+}
 
 img.pss-img {
     -webkit-transform: rotateZ(5deg) translateX(5%);    
